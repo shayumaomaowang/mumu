@@ -40,7 +40,7 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          NEXT_PUBLIC_BASE_PATH: /mumu  # 替换为你的仓库名
+          NEXT_PUBLIC_BASE_PATH: /mumu  # 使用您的仓库名称
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
