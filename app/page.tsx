@@ -45,44 +45,6 @@ export default function HomePage() {
     },
   ]
 
-  const handleGenerate = async () => {
-    if (!selectedTemplate) return;
-    
-    setIsGenerating(true);
-    setError(null);
-    setGeneratedImage(null);
-    
-    try {
-      const formData = formDataMap[selectedTemplate.id];
-      if (!formData) {
-        throw new Error('请先填写内容设置');
-      }
-
-      const response = await fetch('/api/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          template: selectedTemplate.id,
-          content: formData,
-        }),
-      });
-
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || '生成失败');
-      }
-
-      const data = await response.json();
-      setGeneratedImage(data.imageUrl);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : '生成失败');
-    } finally {
-      setIsGenerating(false);
-    }
-  };
-
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
