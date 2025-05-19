@@ -1,9 +1,10 @@
 "use client"
 import Link from "next/link"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Brush, Wrench } from "lucide-react"
+import { getAssetUrl } from "@/lib/utils"
+import { AssetImage } from "@/components/ui/asset-image"
 
 export default function HomePage() {
   const scenarios = [
@@ -72,17 +73,13 @@ export default function HomePage() {
               const cardContent = (
                 <Card className="overflow-hidden h-full transition-all hover:shadow-lg cursor-pointer relative" style={{ minWidth: 340, minHeight: 240 }}>
                   <div className="aspect-[2/1] relative overflow-hidden" style={{ minHeight: 140 }}>
-                    <Image
+                    <AssetImage
                       src={scenario.image}
                       alt={scenario.name}
                       fill
                       priority
                       className="object-cover"
-                      onError={(e) => {
-                        // 图片加载错误时使用占位符
-                        const target = e.target as HTMLImageElement;
-                        target.src = `/placeholder.svg?height=200&width=400&text=${scenario.name}`;
-                      }}
+                      placeholder={`/placeholder.svg?height=200&width=400&text=${scenario.name}`}
                     />
                     {isDev && (
                       <div style={{position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2}}>
