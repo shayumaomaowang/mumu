@@ -96,12 +96,12 @@ export default function HomePage() {
       </header>
       <main className="flex-1 flex items-center justify-center py-6">
         <div className="container flex flex-col gap-6 items-center justify-center">
-          <div className="flex flex-col gap-2 text-center">
+            <div className="flex flex-col gap-2 text-center">
             <h1 className="text-3xl font-bold">选择设计场景</h1>
-            <p className="text-muted-foreground">
+              <p className="text-muted-foreground">
               根据你的需求选择设计场景，我们将为你提供专业模板
-            </p>
-          </div>
+              </p>
+            </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
             {scenarios.map((scenario) => {

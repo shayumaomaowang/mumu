@@ -671,10 +671,10 @@ export default function EditorPage() {
         }
         setFormData((prev) => {
           const newData = {
-            ...prev,
-            [fieldId]: {
-              id: fileId,
-              preview: URL.createObjectURL(file),
+          ...prev,
+          [fieldId]: {
+            id: fileId,
+            preview: URL.createObjectURL(file),
               fileName: file.name,
             },
           };
@@ -799,7 +799,7 @@ export default function EditorPage() {
         // 递归搜索对象中的URL
         const findUrlInObject = (obj: any): string | null => {
           if (!obj) return null;
-          
+            
           // 直接检查是否为URL字符串
           if (typeof obj === 'string') {
             const url = extractUrlFromText(obj);
@@ -870,7 +870,7 @@ export default function EditorPage() {
               setGeneratedImageUrl(imageUrl);
               setIsGenerated(true);
               return;
-            }
+          }
           } catch (e) {
             // 不是有效的JSON，忽略错误
           }
@@ -896,10 +896,10 @@ export default function EditorPage() {
             setGeneratedImageUrl(imageUrl);
             setIsGenerated(true);
             return;
-          }
+            }
         } catch (e) {
           console.error("序列化响应时出错:", e);
-        }
+          }
         
         // 如果所有方法都失败，记录警告
         console.warn("无法从任何已知格式中提取图片URL:", data);
@@ -983,18 +983,18 @@ export default function EditorPage() {
             const devIds = ["marketing-header", "activity-floor", "ppt-cover", "battle-report"];
             const isDev = devIds.includes(scenario.id);
             const menuItem = (
-              <div
-                className={cn(
-                  "flex flex-col items-center justify-center w-full py-3 px-2 cursor-pointer",
-                  selectedScenario === scenario.id
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:bg-muted",
+            <div
+              className={cn(
+                "flex flex-col items-center justify-center w-full py-3 px-2 cursor-pointer",
+                selectedScenario === scenario.id
+                  ? "text-primary bg-primary/10"
+                  : "text-muted-foreground hover:bg-muted",
                   isDev && "opacity-60 cursor-not-allowed"
-                )}
-              >
-                {scenario.icon}
-                <span className="text-xs mt-1 text-center">{scenario.name}</span>
-              </div>
+              )}
+            >
+              {scenario.icon}
+              <span className="text-xs mt-1 text-center">{scenario.name}</span>
+            </div>
             );
             return isDev ? (
               <div key={scenario.id} style={{pointerEvents: 'none', userSelect: 'none'}}>{menuItem}</div>
